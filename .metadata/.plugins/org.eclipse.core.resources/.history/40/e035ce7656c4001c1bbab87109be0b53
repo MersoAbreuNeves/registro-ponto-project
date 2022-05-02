@@ -1,0 +1,5 @@
+package com.project.ibm.entities;
+
+public class Registro {
+
+}

@@ -1,0 +1,12 @@
+package com.project.ibm.dto;
+
+import javax.xml.crypto.Data;
+
+public class RegistroUsuarioDTO {
+
+	private String nome;
+	
+	private Data data;
+	
+	
+}

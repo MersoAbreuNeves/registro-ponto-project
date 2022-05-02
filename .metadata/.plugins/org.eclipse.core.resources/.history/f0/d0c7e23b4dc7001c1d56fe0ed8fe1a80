@@ -1,0 +1,95 @@
+package com.project.ibm.entities;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "users", schema = "public")
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	private Long id;
+	
+	private String nome;
+	
+    @Column(unique = true)
+    private String email;
+    
+    @JsonIgnore
+    private String password;
+	
+	@OneToMany(mappedBy = "users")
+	private List<Registro> registros;
+	
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="user_role",
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="role_id")
+    )
+    public User(String name, String email) {
+        super();
+        this.name = name;
+        this.email = email;
+    }
+    public User(User user) {
+        super();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.roles = user.getRoles();
+        this.id = user.getId();
+    }
+    public User(String name, String email, String password, List<Role> roles) {
+        super();
+        this.name = name;
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+    }
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	
+	
+	
+	
+	
+	
+}

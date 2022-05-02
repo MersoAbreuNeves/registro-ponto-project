@@ -1,0 +1,5 @@
+package com.project.ibm.dto;
+
+public class RegistroUsuarioDTO {
+
+}

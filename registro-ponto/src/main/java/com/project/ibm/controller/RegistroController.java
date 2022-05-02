@@ -1,14 +1,9 @@
 package com.project.ibm.controller;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.ibm.dto.RegistroUsuarioDTO;
 import com.project.ibm.entities.Registro;
-import com.project.ibm.entities.Users;
+import com.project.ibm.entities.User;
 import com.project.ibm.repositories.RegistroRepository;
 import com.project.ibm.repositories.UserRepository;
-
-import ch.qos.logback.core.status.Status;
-import net.bytebuddy.implementation.bytecode.Throw;
 
 @Controller
 @RequestMapping(value = "/register")

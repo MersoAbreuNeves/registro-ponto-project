@@ -7,5 +7,7 @@ import com.project.ibm.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository <User, Long> {
+	
+	User findbyEmail(String email);
 
 }

@@ -1,0 +1,19 @@
+package com.project.ibm.repositories;
+
+import java.util.List;
+
+import javax.xml.crypto.Data;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.project.ibm.entities.Registro;
+
+public interface RegistroRepository extends JpaRepository<Registro, Long> {
+	
+	@Query("select registro from Registro registro innerJoin Users user on registro.user.id = user.id "
+			+ "where user.nome = :nome and registro.data = :data")
+	List<Registro> findByNameAndDate(String nome, Data data);
+	
+	
+}

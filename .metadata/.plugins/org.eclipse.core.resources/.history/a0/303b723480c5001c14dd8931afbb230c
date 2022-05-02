@@ -1,0 +1,82 @@
+package com.project.ibm.entities;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name = "registro", schema = "public")
+public class Registro implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private Instant moment;
+		
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private Users users;
+
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	
+	public Registro() {
+		
+	}
+	
+	
+	public Registro(Long id, Instant moment) {
+		
+		this.id = id;
+		this.moment = moment;
+	}
+
+
+
+	public Users getUsers() {
+		return users;
+	}
+
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
+	public Instant getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
+
+
+
+	
+}

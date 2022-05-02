@@ -12,7 +12,13 @@ import org.springframework.security.core.GrantedAuthority;
 public class Role implements GrantedAuthority {
 
 
-    public Role(String name) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public Role(String name) {
         this.name = name;
     }
     public Role() {

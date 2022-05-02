@@ -1,0 +1,10 @@
+package com.project.ibm.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.project.ibm.entities.Registro;
+
+public interface RegistroRepository extends JpaRepository<Registro, Long> {
+
+	
+}
